@@ -1,0 +1,284 @@
+{% comment %} {% block content %}
+    <style>
+        /* General Container */
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        /* Center the page title */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Table Styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        .table thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        /* Add margin to the 'Add Sales Pipeline Entry' button */
+        .text-right {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        /* Adjust the table for responsiveness */
+        @media (max-width: 768px) {
+            .table {
+                font-size: 0.9em;
+            }
+            .btn {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+    <h1>Sales Pipeline</h1>
+    
+    <div class="text-right">
+        <a href="{% url 'add_sales_pipeline' %}" class="btn btn-primary">Add Sales Pipeline Entry</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lead</th>
+                <th>Stage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in pipeline_data %}
+                <tr>
+                    <td>{{ entry.lead.name }}</td>
+                    <td>{{ entry.get_stage_display }}</td>
+                    <td>
+                        <a href="{% url 'update_stage' entry.pk %}" class="btn btn-warning">Update Stage</a>
+                        <a href="{% url 'view_lead_progress' entry.lead.pk %}" class="btn btn-info">Track Progress</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %} {% endcomment %}
+
+
+{% block content %}
+    <style>
+        /* General Container */
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        /* Center the page title */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #343a40;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Table Styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+        }
+
+        .table thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        div>a{
+            text-align: left
+        }
+        /* Button Styling */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        /* Text alignment for 'Add Sales Pipeline Entry' button */
+        .text-right {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        /* Back to Dashboard link */
+        a.back-dashboard {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a.back-dashboard:hover {
+            color: #0056b3;
+        }
+
+        /* Adjust the table for responsiveness */
+        @media (max-width: 768px) {
+            .table {
+                font-size: 0.9em;
+            }
+            .btn {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+
+    <h1>Sales Pipeline</h1>
+    
+    <div class="text-right">
+        <a href="{% url 'add_sales_pipeline' %}" class="btn btn-primary">Add Sales Pipeline Entry</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lead</th>
+                <th>Stage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in pipeline_data %}
+                <tr>
+                    <td>{{ entry.lead.name }}</td>
+                    <td>{{ entry.get_stage_display }}</td>
+                    <td>
+                        <a href="{% url 'update_stage' entry.pk %}" class="btn btn-warning">Update Stage</a>
+                        <a href="{% url 'view_lead_progress' entry.lead.pk %}" class="btn btn-info">Track Progress</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'dashboard' %}" class="back-dashboard">Back to Dashboard</a>
+{% endblock %}

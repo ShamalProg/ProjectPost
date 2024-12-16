@@ -1,0 +1,221 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Internal CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        nav ul li a:active {
+            background-color: #00408d;
+        }
+
+        nav ul li a:last-child {
+            background-color: #dc3545;
+        }
+
+        nav ul li a:last-child:hover {
+            background-color: #c82333;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 1em;
+            }
+
+            nav ul li a {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Welcome to the Dashboard</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'leads' %}">Manage Leads</a></li>
+                <li><a href="{% url 'contacts' %}">Manage Contacts</a></li>
+                <li><a href="{% url 'sales_pipeline' %}">Sales Pipeline</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Internal CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        nav ul li a:active {
+            background-color: #00408d;
+        }
+
+        nav ul li a:last-child {
+            background-color: #dc3545;
+        }
+
+        nav ul li a:last-child:hover {
+            background-color: #c82333;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 1em;
+            }
+
+            nav ul li a {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Welcome to the Dashboard</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'leads' %}">Manage Leads</a></li>
+                <li><a href="{% url 'contacts' %}">Manage Contacts</a></li>
+                <li><a href="{% url 'sales_pipeline' %}">Sales Pipeline</a></li>
+                <li><a href="{% url 'report_and_analytics' %}">Report & Analytics</a></li> <!-- New link added -->
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</body>
+</html>
+
